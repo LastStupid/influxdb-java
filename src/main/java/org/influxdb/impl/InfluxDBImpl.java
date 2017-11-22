@@ -532,6 +532,8 @@ public class InfluxDBImpl implements InfluxDB {
     try {
       Response<T> response = call.execute();
       if (response.isSuccessful()) {
+        //********* Need to close response *********
+        //********* before return          *********   
         return response.body();
       }
       try (ResponseBody errorBody = response.errorBody()) {
